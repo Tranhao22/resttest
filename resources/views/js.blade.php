@@ -84,6 +84,11 @@
             return $(this).val();
         }).get();
 
+        if (dishSelectData.some(function(item) { return !item }) || dishSelectData.length === 0) {
+            $('.dish-error-feedback').text("Please select a valid.");
+            return false;
+        }
+
         var hasDuplicates = dishSelectData.some(function(item, index) {
             return dishSelectData.indexOf(item) !== index;
         });
